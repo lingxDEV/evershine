@@ -4594,6 +4594,9 @@ void Player::KillPlayer()
 
     // update visibility
     //UpdateObjectVisibility(); // pussywizard: not needed
+
+    if (GetLevel() > 1)
+        GiveLevel(GetLevel() - 1);
 }
 
 void Player::OfflineResurrect(ObjectGuid const& guid, CharacterDatabaseTransaction trans)
