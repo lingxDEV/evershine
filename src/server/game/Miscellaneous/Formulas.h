@@ -132,17 +132,17 @@ namespace Acore::XP
             case 0:
             case 1:
             case 2:
-                rate = 1.0f;
+                rate = 1.8f;
                 break;
             case 3:
-                rate = 1.166f;
+                rate = 2.4f;
                 break;
             case 4:
-                rate = 1.3f;
+                rate = 2.8f;
                 break;
             case 5:
             default:
-                rate = 1.4f;
+                rate = 3.5f;
             }
         }
 
