@@ -636,6 +636,13 @@ void WorldSession::HandleInitiateTradeOpcode(WorldPacket& recvPacket)
         return;
     }
 
+    if (pOther->GetLevel() != _player->GetLevel())
+    {
+        SendTradeStatus(TRADE_STATUS_TRADE_CANCELED);
+        ChatHandler(this).SendNotification("You can only trade with players of the same level.");
+        return;
+    } 
+
     if (!sScriptMgr->OnPlayerCanInitTrade(_player, pOther))
         return;
 
