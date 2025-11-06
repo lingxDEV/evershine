@@ -4598,7 +4598,7 @@ void Player::KillPlayer()
     // update visibility
     //UpdateObjectVisibility(); // pussywizard: not needed
 
-    if (GetLevel() > 1)
+    if (GetLevel() > 1 && GetLevel() < 60)
         GiveLevel(GetLevel() - 1);
 
     TeleportTo(m_homebindMapId, m_homebindX, m_homebindY, m_homebindZ, GetOrientation());
