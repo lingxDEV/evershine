@@ -4601,8 +4601,10 @@ void Player::KillPlayer()
     if(!InBattleground() && !InArena())
     {
         if (GetLevel() > 1 && GetLevel() < 60)
+        {
             GiveLevel(GetLevel() - 1);
             CastSpell(this, 80908, false);
+        }
 
         TeleportTo(m_homebindMapId, m_homebindX, m_homebindY, m_homebindZ, GetOrientation());
         ResurrectPlayer(1.0f);
