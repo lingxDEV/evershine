@@ -4598,20 +4598,21 @@ void Player::KillPlayer()
     // update visibility
     //UpdateObjectVisibility(); // pussywizard: not needed
 
-    if (GetLevel() > 1 && GetLevel() < 60)
-        GiveLevel(GetLevel() - 1);
+    if(!InBattleground() && !InArena())
+    {
+        if (GetLevel() > 1 && GetLevel() < 60)
+            GiveLevel(GetLevel() - 1);
+            CastSpell(this, 80908, false);
 
-    TeleportTo(m_homebindMapId, m_homebindX, m_homebindY, m_homebindZ, GetOrientation());
-    ResurrectPlayer(1.0f);
-    CastSpell(this, 80908, false);
-    CastSpell(this, 80908, false);
-    CastSpell(this, 80908, false);
+        TeleportTo(m_homebindMapId, m_homebindX, m_homebindY, m_homebindZ, GetOrientation());
+        ResurrectPlayer(1.0f);
 
-    if (Aura* aura = this->GetAura(80909))
-        CastSpell(this, 80910, true);
+        if (Aura* aura = this->GetAura(80909))
+            CastSpell(this, 80910, true);
 
-    CastSpell(this, 80909, false);
-    SaveToDB(false, false);
+        CastSpell(this, 80909, false);
+        SaveToDB(false, false);
+    }
 }
 
 void Player::OfflineResurrect(ObjectGuid const& guid, CharacterDatabaseTransaction trans)
